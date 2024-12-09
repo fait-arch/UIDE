@@ -25,7 +25,7 @@ Install-ADDSForest `
 
 ### **Entregables**:
 - Capturas de pantalla mostrando:
-
+![Evidencia1](./img/CapturaC1.png)
 
 ---
 
@@ -60,6 +60,7 @@ Add-ADGroupMember -Identity "AdminVentas" -Members "jpadilla"
 
 ### **Entregables**:
 - Capturas de pantalla de usuarios y grupos creados.
+![Evidencia2](./img/CapturaC2.png)
 
 ---
 
@@ -81,17 +82,25 @@ Add-ADGroupMember -Identity "AdminVentas" -Members "jpadilla"
 Install-WindowsFeature -Name Print-Services
 
 # Configurar impresora compartida
-Add-PrinterPort -Name "IP_192.168.1.100" -PrinterHostAddress "192.168.1.100"
-Add-Printer -Name "ImpresoraVentas" -DriverName "Microsoft PS Class Driver" `
-    -PortName "IP_192.168.1.100" -Shared -ShareName "VentasPrinter"
+Add-PrinterPort -Name "IP_192.168.124.100" -PrinterHostAddress "192.168.124.100"
+Get-PrinterPort | Where-Object { $_.Name -eq "IP_192.168.124.100" }
 
-# Configurar política de impresión
+# Instalar controladores genericos o los reales si se tienen
+Add-PrinterDriver -Name "Generic / Text Only"
+
+# Agregar controladores genericos o los reales si se tienen
+Add-Printer -Name "ImpresoraVentas" -DriverName "Generic / Text Only" `
+    -PortName "IP_192.168.124.100" -Shared -ShareName "VentasPrinter"
+Get-Printer | Where-Object { $_.Name -eq "ImpresoraVentas" }
+
+# Configurar política de impresión SI LOS TIENES
 Set-Printer -Name "ImpresoraVentas" -PermissionSDDL "O:BAG:SYD:(A;;RPWP;;;AU)"
+Get-Printer -Name "ImpresoraVentas" | Select-Object Permissions
 ```
 
 ### **Entregables**:
 - Capturas mostrando impresoras instaladas y compartidas.
-
+![Evidencia3](./img/CapturaC3.png)
 
 ---
 
@@ -122,7 +131,7 @@ New-GPLink -Name "RedireccionCarpetas" -Target "OU=Ventas,DC=uide,DC=edu"
 
 ### **Entregables**:
 - Capturas de políticas aplicadas.
-- Scripts detallados.
+![Evidencia4](./img/CapturaC4.png)
 
 ---
 
@@ -151,4 +160,5 @@ Enable-BitLocker -MountPoint "C:" -RecoveryPasswordProtector
 ### **Entregables**:
 - Informe justificando la seguridad añadida.
 - Capturas de actualizaciones y discos cifrados.
+![Evidencia5](./img/CapturaC5.png)
 
