@@ -155,7 +155,7 @@ Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 # Variables de configuración
 $DomainName = "uidetechsolutions.local"
 $NetbiosName = "UIDETECHSOL"
-$SafeModeAdminPassword = ConvertTo-SecureString "P@ssw0rd123!" -AsPlainText -Force
+$SafeModeAdminPassword = ConvertTo-SecureString "Uide.asu.123" -AsPlainText -Force
 
 # Promocionar a controlador de dominio
 Install-ADDSForest `
@@ -167,7 +167,7 @@ Install-ADDSForest `
 
 
 # 2. Creación de Unidades Organizativas (OUs)
-$OUs = @("TI", "Finanzas", "RRHH")
+$OUs = @("TI","Finanzas", "LAB216", "LABBIO", "RRHH")
 foreach ($OU in $OUs) {
     New-ADOrganizationalUnit -Name $OU -Path "DC=uidetechsolutions,DC=local"
 }
@@ -199,6 +199,8 @@ function Create-DepartmentUser {
 # Crear usuarios para cada departamento
 $Users = @{
     "TI" = @("admin1", "soporte1", "desarrollo1")
+    "LAB216" = @("Lab001", "Lab002", "Lab003")
+    "LABBIO" = @("sofia", "anni", "desarrollo1")
     "Finanzas" = @("contador1", "tesorero1", "analista1")
     "RRHH" = @("rrhh1", "recruiter1", "capacitador1")
 }
