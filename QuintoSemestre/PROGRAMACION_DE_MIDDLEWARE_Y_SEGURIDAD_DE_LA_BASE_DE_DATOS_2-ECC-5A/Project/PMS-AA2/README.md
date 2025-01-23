@@ -49,5 +49,50 @@ erDiagram
 
 ```
 
-##  Ejecucion 
+##  Ejecucion Frontend
 
+### Acceder a la carpeta
+```bash
+cd Frontend
+```
+
+### Instalar dependencias
+```bash
+npm install
+```
+
+### Ejecutar el servidor de desarrollo
+```bash
+npm run dev
+```
+
+### Crear una versión de producción
+```bash
+npm run build
+```
+### Ejecutar la aplicación en producción
+```bash
+npm start
+```
+
+##  Ejecucion Backend
+
+### Acceder a la carpeta
+```bash
+cd Backend
+```
+
+### Activar Entorno
+```bash
+source .venv/bin/activate
+```
+
+### Instalar dependencias
+```bash
+pip install -r requirements.txt
+```
+
+### Correr Servidor
+```bash
+python manage.py runserver
+```
