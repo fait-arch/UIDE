@@ -42,57 +42,41 @@ erDiagram
     }
 ```
 
-## Diagrama de Carpetas
-
-```mermaid
-
-
-```
-
 ##  Ejecucion Frontend
 
-### Acceder a la carpeta
+### Preparacion del entorno
 ```bash
 cd Frontend
-```
 
-### Instalar dependencias
-```bash
+# Instalar dependencias
 npm install
-```
 
-### Ejecutar el servidor de desarrollo
-```bash
+# Ejecutar el servidor de desarrollo
 npm run dev
 ```
 
-### Crear una versión de producción
+### Correr Servidor de Frontend
 ```bash
 npm run build
-```
-### Ejecutar la aplicación en producción
-```bash
+
+# Ejecutar la aplicación en producción
 npm start
 ```
 
 ##  Ejecucion Backend
 
-### Acceder a la carpeta
+### Preparacion del entorno
 ```bash
 cd Backend
-```
 
-### Activar Entorno
-```bash
+# Activar Entorno
 source .venv/bin/activate
-```
 
-### Instalar dependencias
-```bash
+# Instalar dependencias
 pip install -r requirements.txt
 ```
 
-### Correr Servidor
+### Correr Servidor de Backend
 ```bash
 python manage.py runserver
 ```
