@@ -1,0 +1,31 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./Backend:/app
+      - ./db:/db
+    environment:
+      - DATABASE_URL=sqlite:////db/mydatabase.db
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./Frontend/rest-api-microservices
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  db:
+    image: alpine:latest
+    volumes:
+      - ./db:/db
