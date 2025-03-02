@@ -36,12 +36,13 @@ export default function FormularioUsuario() {
         },
         body: JSON.stringify(formData),
       })
+      
+      const data = await response.json()
 
       if (!response.ok) {
-        throw new Error("Error al enviar el formulario")
-      }
+          throw new Error("Error al enviar el formulario")
+        }
 
-      const data = await response.json()
       console.log("Respuesta del servidor:", data)
 
       toast({
@@ -97,4 +98,3 @@ export default function FormularioUsuario() {
     </form>
   )
 }
-

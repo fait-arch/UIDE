@@ -1,0 +1,15 @@
+
+{
+    "Role": "arn:aws:iam::000000000000:role/s3-replication-role",
+    "Rules": [
+        {
+            "Status": "Enabled",
+            "Priority": 1,
+            "DeleteMarkerReplication": {"Status": "Enabled"},
+            "Filter": {},
+            "Destination": {
+                "Bucket": "arn:aws:s3:::cafeteria-website-bucket"
+            }
+        }
+    ]
+}
